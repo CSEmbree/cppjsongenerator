@@ -105,7 +105,7 @@ bool json_generator::add_array_value( std::vector<string > values ) {
 
   // create single string of array values
   std::ostringstream oss;
-  int vi = 0;
+  unsigned int vi = 0;
 
   // first n-1 elements are element seperated
   for( vi = 0; vi < values.size()-1; vi++ ) {
@@ -134,7 +134,7 @@ bool json_generator::add_array_value( std::vector<int > values ) {
   std::vector<double > dvalues;
   dvalues.clear();
 
-  for( int i = 0; i < values.size(); i++ ) {
+  for( unsigned int i = 0; i < values.size(); i++ ) {
     dvalues.push_back( values.at(i) );
   }
 
@@ -155,7 +155,7 @@ bool json_generator::add_array_value( std::vector<double > values ) {
 
   // create single string of array values
   std::ostringstream oss;
-  int vi = 0;
+  unsigned int vi = 0;
 
   // first n-1 elements are element seperated
   for( vi = 0; vi < values.size()-1; vi++ ) {
@@ -185,7 +185,7 @@ bool json_generator::add_value( std::vector<string > values ) {
 
   // create single string of array values
   std::ostringstream oss;
-  int vi = 0;
+  unsigned int vi = 0;
 
   // first n-1 elements are element seperated
   for( vi = 0; vi < values.size()-1; vi++ ) {
@@ -214,7 +214,7 @@ bool json_generator::add_value( std::vector<int > values ) {
   std::vector<double > dvalues;
   dvalues.clear();
 
-  for( int i = 0; i < values.size(); i++ ) {
+  for( unsigned int i = 0; i < values.size(); i++ ) {
     dvalues.push_back( values.at(i) );
   }
 
@@ -235,7 +235,7 @@ bool json_generator::add_value( std::vector<double > values ) {
 
   // create single string of array values
   std::ostringstream oss;
-  int vi = 0;
+  unsigned int vi = 0;
 
   // first n-1 elements are element seperated
   for( vi = 0; vi < values.size()-1; vi++ ) {
@@ -380,8 +380,8 @@ bool json_generator::write_to( string fname, string fpath ) {
       format( &data );
        
       // write each line, line by line
-      for( int i = 0; i < data.size(); i++ ) {
-      outfile << data.at(i);
+      for( unsigned int i = 0; i < data.size(); i++ ) {
+	outfile << data.at(i);
       }
     }
 
@@ -404,7 +404,7 @@ bool json_generator::format( std::vector<string > *data ) {
   string indent = "";
 
   // add an end of line element to each
-  for( int i = 0; i < data->size(); i++ ) {
+  for( unsigned int i = 0; i < data->size(); i++ ) {
 
 
     if( data->at(i).back() != eol.back() ) {
@@ -502,7 +502,7 @@ string json_generator::get_contents_string() {
   format( &data );
 
   std::ostringstream oss;
-  for( int i = 0; i < data.size(); i++ ) {
+  for( unsigned int i = 0; i < data.size(); i++ ) {
     oss << data.at(i);
   }
 
@@ -517,7 +517,7 @@ string json_generator::get_organisation_string() {
 
   // construct a csv of organisation structure
   std::ostringstream oss;
-  for( int i = 0; i < organisation.size(); i++ ) {
+  for( unsigned int i = 0; i < organisation.size(); i++ ) {
     oss << organisation.at(i);
   }
  
