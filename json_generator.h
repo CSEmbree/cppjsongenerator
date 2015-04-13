@@ -76,12 +76,13 @@ class json_generator {
   bool add_value( std::vector<string > values );
   bool add_value( std::vector<int > values );
   bool add_value( std::vector<double > values );
-  bool add_array_value( string key );
+  //bool add_array_value( string key );
   bool add_array_value( std::vector<string > values );
   bool add_array_value( std::vector<int > values );
   bool add_array_value( std::vector<double > values );
   bool add( string key, string value );
   bool newline( );
+  bool open_object( string key );  
   bool open_object();
   bool close_object();
   bool open_array();

@@ -217,7 +217,7 @@ bool json_generator::add_array_value( std::vector<int > values ) {
     dvalues.push_back( values.at(i) );
   }
 
-  res = add_value( dvalues );
+  res = add_array_value( dvalues );
 
 
   return res;
@@ -342,6 +342,20 @@ bool json_generator::newline( ) {
 
   contents.push_back( eol );
   organisation.push_back( pos(contents.size()-1) + mn );
+
+
+  return res;
+}
+
+
+bool json_generator::open_object( string key ) {
+  
+  string mn="open_object";
+  bool res = true;
+
+
+  add_key( key );   // object name as key
+  res = open_object(); // open a new object
 
 
   return res;
