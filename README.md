@@ -39,13 +39,13 @@ use it as instructed in the `3. BASIC USE` section.
 After including the `cppjsongenerator` class in your build path,
 create and instance of it and use it as you would expect. For 
 example, the following code:
-``
+```c
 EXAMPLE CODE WILL GO HERE
-``
+```
 
 generates the following JSON output as a file called _example.txt_
 
-```
+```json
 {
 "title": "Example Schema",
 "type": "object",
