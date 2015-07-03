@@ -1,5 +1,5 @@
 
-#include "json_generator.h"
+#include "../src/json_generator.h"
 
 
 int main(int argc, char **argv) {
