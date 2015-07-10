@@ -54,6 +54,7 @@ class json_generator {
   void print();
 
   // business
+  bool write_to( bool formatted = true );
   bool write_to( string fname, string fpath, bool formatted );
   //template <typename T> bool add_key( T key );
   //template <typename T> bool add_value( T key );

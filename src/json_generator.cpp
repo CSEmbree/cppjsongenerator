@@ -449,6 +449,22 @@ bool json_generator::clear_contents() {
 }
 
 
+bool json_generator::write( bool formatted ) {
+
+  string mn = "write:";
+  bool res = true;
+
+  // try to use the file name provided at creation                                                                                           
+  string filename = output_file_name;
+  string filepath = ""; //current working directory                                                                                          
+
+  res = write_to( filename, filepath, formatted);
+
+
+  return res;
+}
+
+
 bool json_generator::write_to( string fname, string fpath, bool formatted ) {
  
   string mn = "write_to:";
