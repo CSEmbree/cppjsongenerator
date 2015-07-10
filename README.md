@@ -76,7 +76,7 @@ example, the following code:
 
 generates the following JSON output as a file called _example.txt_
 
-```json
+```javascript
 {
 "title": "Example Schema",
 "type": "object",
