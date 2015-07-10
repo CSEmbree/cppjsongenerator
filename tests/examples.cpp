@@ -1,18 +1,19 @@
-
-#include "../src/json_generator.h"
-
-
-int main(int argc, char **argv) {
-
-  cout<<"** CPPJSONGENERATOR - TEST - STOP"<<endl;
-
-
-  string fname = "hello";
-  json_generator jg( fname );
+/*
+TITLE:   examples.cpp
+PURPOSE: Example code for using cppjsongenerator's jsongenerator class
+AUTHOR:  Cameron Embree
+CREATED: June 10, 2015
+*/
 
 
-  // TEST 1
-  /*
+#include "examples.h"
+
+
+/********************* EXAMPLES ***********************/
+
+
+// TEST 1
+/*
   {
     "hello": "world",
     "some_key": "some_value",
@@ -29,7 +30,9 @@ int main(int argc, char **argv) {
     }
   }
 */
-
+void example1() {
+  string fileName = "example1.txt";
+  json_generator jg( fileName );
 
   jg.open_object(); //start schema                 // {
   
@@ -75,18 +78,14 @@ int main(int argc, char **argv) {
 
   jg.close_object(); //closes schema               //  }
 
-
-  cout<<"----Formatted content string START: "<<endl;
-  cout<<jg.get_contents_string( true )<<endl;
-  cout<<"----Formatted content string STOP: "<<endl;
-  cout<<"----Organisation string START: "<<endl;
-  cout<<jg.get_organisation_string()<<endl;
-  cout<<"----Organisation string START: "<<endl;
-  jg.print();
+  make_example_output(&jg);
+}
 
 
-  
-  // TEST 2
+
+
+
+// TEST 2
   /*
   {
     "menu": {
@@ -110,6 +109,10 @@ int main(int argc, char **argv) {
     }
   }
   */
+void example2() {
+  string fileName = "example2.txt";
+  json_generator jg( fileName );
+
   jg.clear_contents();
 
   jg.open_object(); //start schema        // {
@@ -147,15 +150,8 @@ int main(int argc, char **argv) {
   jg.close_object();                       //   }
   jg.close_object();                       // }
 
-
-  cout<<"----Formatted content string START: "<<endl;
-  cout<<jg.get_contents_string( true )<<endl;
-  cout<<"----Formatted content string STOP: "<<endl;
-  cout<<"----Organisation string START: "<<endl;
-  cout<<jg.get_organisation_string()<<endl;
-  cout<<"----Organisation string START: "<<endl;
-  jg.print();
-
+  make_example_output(&jg);
+}
 
 
 
@@ -185,6 +181,10 @@ int main(int argc, char **argv) {
     }         
   }         
   */
+void example3() {
+  string fileName = "example3.txt";
+  json_generator jg( fileName );
+
 
   jg.clear_contents(); //reset for test
 
@@ -220,18 +220,65 @@ int main(int argc, char **argv) {
   jg.close_object();  // closes "glossary"                          //    }
   jg.close_object();  // closes entire schema                       //  }
 
+  make_example_output(&jg);
+}
 
+
+
+
+
+void example4() {
+  string fileName = "example4.txt";
+  json_generator jg( fileName );
+
+
+}
+
+
+
+
+
+
+/********************* HELPERS FOR EXAMPLES ***********************/
+
+
+void make_example_output(json_generator *jg) {
+  display_output(jg);
+  write_output(jg);
+}
+
+
+void write_output(json_generator *jg) {
+  // Write to file
+}
+
+
+void display_output(json_generator *jg ) {
   cout<<"----Formatted content string START: "<<endl;
-  cout<<jg.get_contents_string( true )<<endl;
+  cout<<jg->get_contents_string( true )<<endl;
   cout<<"----Formatted content string STOP: "<<endl;
   cout<<"----Organisation string START: "<<endl;
-  cout<<jg.get_organisation_string()<<endl;
+  cout<<jg->get_organisation_string()<<endl;
   cout<<"----Organisation string START: "<<endl;
-  jg.print();
+  jg->print();
+}
 
 
 
+
+
+/********************* EXAMPLES ORGANIZER ***********************/
+
+int main(int argc, char **argv) {
   cout<<"** CPPJSONGENERATOR - TEST - STOP"<<endl;
 
+  example1();
+  example2();
+  example3();
+  example4();
+
+  cout<<"** CPPJSONGENERATOR - TEST - STOP"<<endl;
   return 0;
 }
+
+
