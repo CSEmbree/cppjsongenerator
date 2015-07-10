@@ -4,5 +4,5 @@
 # No files created for building the examples or generated 
 #  by the examples should exist after this script finishes!
 
-rm -f *.txt *.*~ *.dSYM run_examples
+rm -rf *.txt *.*~ *.dSYM run_examples
 
