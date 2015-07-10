@@ -40,7 +40,38 @@ After including the `cppjsongenerator` class in your build path,
 create and instance of it and use it as you would expect. For 
 example, the following code:
 ```c
-EXAMPLE CODE WILL GO HERE
+  string fileName = "json_example.txt";
+  json_generator jg( fileName );
+
+  jg.open_object();                          //{                                                                                 
+
+  jg.add_pair("title","Example Schema");     //  "title": "Example Schema",                                                      
+  jg.add_pair("type","object");              //  "type": "object",                                                               
+
+  jg.open_object("properties");              //  "properties": {                                                                 
+
+  jg.open_object("firstName");               //    "firstName": {                                                                
+  jg.add_pair("type","string");              //      "type": "string"                                                            
+  jg.close_object();                         //    },                                                                            
+
+  jg.open_object("lastName");                //    "lastName": {                                                                 
+  jg.add_pair("type","string");              //      "type": "string"                                                            
+  jg.close_object();                         //    }                                                                             
+
+  jg.open_object("age");                     //    "age": {                                                                      
+  jg.add_pair("description","Age in years"); //      "description": "Age in years",                                              
+  jg.add_pair("type","integer");             //      "type": "integer",                                                          
+  jg.add_pair("minimum",0);                  //      "minimum": 0                                                                
+  jg.close_object();                         //    }                                                                             
+  jg.close_object();                         //  },                                                                              
+
+  // vectors are used to represent arrays
+  std::vector<string > requiredFields;
+  requiredFields.push_back("firstName");
+  requiredFields.push_back("lastName");
+  jg.add_pair("required", requiredFields);   //  "required": ["firstName", "lastName"]                                           
+
+  jg.close_object();                         //} 
 ```
 
 generates the following JSON output as a file called _example.txt_
