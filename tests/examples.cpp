@@ -224,14 +224,61 @@ void example3() {
 }
 
 
-
-
-
+// TEST 4
+/*
+{
+  "title": "Example Schema",
+  "type": "object",
+  "properties": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "age": {
+      "description": "Age in years",
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "required": ["firstName", "lastName"]
+}
+*/
 void example4() {
   string fileName = "example4.txt";
   json_generator jg( fileName );
 
+  jg.open_object();                          //{
 
+  jg.add_pair("title","Example Schema");     //  "title": "Example Schema",
+  jg.add_pair("type","object");              //  "type": "object",
+  
+  jg.open_object("properties");              //  "properties": {
+
+  jg.open_object("firstName");               //    "firstName": {
+  jg.add_pair("type","string");              //      "type": "string"
+  jg.close_object();                         //    },
+
+  jg.open_object("lastName");                //    "lastName": {
+  jg.add_pair("type","string");              //      "type": "string"
+  jg.close_object();                         //    }
+
+  jg.open_object("age");                     //    "age": {
+  jg.add_pair("description","Age in years"); //      "description": "Age in years",
+  jg.add_pair("type","integer");             //      "type": "integer",
+  jg.add_pair("minimum",0);                  //      "minimum": 0
+  jg.close_object();                         //    }
+  jg.close_object();                         //  },
+  
+  std::vector<string > requiredFields;
+  requiredFields.push_back("firstName");
+  requiredFields.push_back("lastName");
+  jg.add_pair("required", requiredFields);   //  "required": ["firstName", "lastName"]
+
+  jg.close_object();                         //}
+
+  make_example_output(&jg);
 }
 
 
